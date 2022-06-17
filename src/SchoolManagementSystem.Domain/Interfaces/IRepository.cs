@@ -1,11 +1,10 @@
 
+using SchoolManagementSystem.Domain.Entities;
+
 namespace SchoolManagementSystem.Domain.Interfaces;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<TEntity> where TEntity : Entity
 {
-    IQueryable<TEntity> Query();
-    void AddAsync(TEntity entity);
-    void Update(TEntity entity);
-    void Remove(TEntity entity);
-    void SaveAsync();
+    void Save();
+    IList<TEntity> GetAll();
 }
