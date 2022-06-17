@@ -8,8 +8,8 @@ function ResaltarFila(id_fila) {
     document.getElementById(id_fila).style.backgroundColor = "#ffe6e63b";
   }
   // CONVERTIR LAS FILAS EN LINKS
-  function CrearEnlace(url) {
-    location.href = url;
+  function CrearEnlace() {
+    window.location.href = '@Url.Action("Student_Details", "Student")/';
   }
 
   var $rows = $("#table tr");

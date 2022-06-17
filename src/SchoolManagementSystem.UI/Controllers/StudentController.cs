@@ -5,19 +5,24 @@ using SchoolManagementSystem.Domain.Interfaces;
 using SchoolManagementSystem.Infrastructure.Data;
 using SchoolManagementSystem.UI.Models;
 
-namespace SchoolManagementSystem.UI.Controllers
-{
-    public class StudentController : Controller
-    {
-        private readonly IRepository<Student> _repository;
+namespace SchoolManagementSystem.UI.Controllers;
 
-        public StudentController(IRepository<Student> repository)
-        {
-            _repository = repository;
-        }
-        public IActionResult Index()
-        {
-            return View();
-        }
+public class StudentController : Controller
+{
+    private readonly IRepository<Student> _repository;
+
+    public StudentController(IRepository<Student> repository)
+    {
+        _repository = repository;
+    }
+    public IActionResult Index()
+    {
+        return View(_repository.GetAll());
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
